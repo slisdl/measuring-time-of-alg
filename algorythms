@@ -1,0 +1,50 @@
+# 0(1)
+def return_firs(iterable):
+    return iterable[0]
+
+# 0(log(n))
+def binary_search(iterable):
+    pass
+
+# 0(n**k, k<1)
+def tree_search(tree):
+    pass
+
+# 0(n)
+def double_value(iterable):
+    result = list()
+    for element in iterable:
+        result.append(element * 2)
+    return result
+    # return [element *2 for element in iterable]
+
+# 0(n*log(n))
+def find_max():
+    the_list = [[1, 2, 3], [9, 6, 4], [4, 7, 8]]
+    tmp_max = 0
+    for sublist in the_list:
+        for element in sublist:
+            if element > tmp_max:
+                tmp_max = element
+
+    sublist_max = []
+    for sublist in the_list:
+        sublist_max.append(max(sublist))
+    return max(sublist_max)
+
+# 0(2 * n) => 0(n)
+def print_double(iterable):
+    result = list()
+    for element in iterable:
+        result.append(element * 2)
+    for item in result:
+       print(item)
+
+# 0(n**2)
+def my_sort(iterable):
+    for i in range(len(iterable)):
+        for j in range(i + 1, len(iterable)):
+            if iterable[i] > iterable[j]:
+                iterable[i], iterable[j] = iterable[j], iterable[i]
+    return iterable
+
