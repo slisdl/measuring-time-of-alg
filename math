@@ -1,0 +1,39 @@
+import time
+from math import gcd
+
+def time_it(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} took {end_time - start_time:.6f} seconds")
+        return result
+    return wrapper
+
+@time_it
+def gcd_classic(m, n):
+    while m != n:
+        if m > n:
+            m = m - n
+        else:
+            n = n - m
+    return m
+
+@time_it
+def gcd_optimised(a, b):
+    r = a % b
+    while r:
+        a = b
+        b = r
+        r = a % b
+    return b
+
+@time_it
+def gcd_builtin(a, b):
+    return gcd(a, b)
+
+if __name__ == '__main__':
+    m, n = 999_999, 2
+    print(f"GCD (Classic) of {m} and {n}: {gcd_classic(m, n)}")
+    print(f"GCD (Optimised) of {m} and {n}: {gcd_optimised(m, n)}")
+    print(f"GCD (Builtin) of {m} and {n}: {gcd_builtin(m, n)}")
